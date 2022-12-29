@@ -6,7 +6,7 @@ import os
 
 pTime = 0
 cTime = 0
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
 #to store the finger images
 folderPath = "images"
@@ -50,14 +50,14 @@ while True:
         h, w, c = overlayList[totalFingers - 1].shape
         img[0:h, 0:w] = overlayList[totalFingers - 1]
 
-        cv2.rectangle(img, (0,265), (130,425), (0,255,0), cv2.FILLED)
-        cv2.putText(img, str(totalFingers), (15, 400), cv2.FONT_HERSHEY_PLAIN, 10, (255,0,0), 25)
+        cv2.rectangle(img, (0,265), (130,425), (0,255,255), cv2.FILLED)
+        cv2.putText(img, str(totalFingers), (15, 400), cv2.FONT_HERSHEY_PLAIN, 10, (0,0,0), 25)
 
     cTime = time.time()
     fps = 1/(cTime - pTime)
     pTime = cTime
 
-    cv2.putText(img, f'FPS: {int(fps)}' , (400,70), cv2.FONT_HERSHEY_PLAIN, 3, (0,255,255), 3) 
+    cv2.putText(img, f'FPS: {int(fps)}' , (200,70), cv2.FONT_HERSHEY_PLAIN, 6, (0,0,0), 3) 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
